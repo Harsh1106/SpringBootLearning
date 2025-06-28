@@ -33,14 +33,14 @@ public class StudentRepo {
 
     public List<Student> findALl() {
         String sql = "select * from student";
-        RowMapper<Student> mapper = new RowMapper<Student>() {
-            @Override
-            public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-                
 
-                return null;
-            }
-        }
-        jdbc.query(sql, );
+        return jdbc.query(sql, (rs, rowNum) -> {
+            Student s = new Student();
+            s.setRollNo(rs.getInt("rollno"));
+            s.setName(rs.getString("name"));
+            s.setMarks(rs.getInt("marks"));
+            return s;
+        });
+//        the above lamda says for this query it will return two things the result set and row number just use result set and fetch your data and return
     }
 }
