@@ -18,10 +18,10 @@ import java.time.LocalDateTime;
         name="patient",
         uniqueConstraints = {
 //                @UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}),
-                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birth_date"})
+                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birthDate"})
         },
         indexes = {
-                @Index(name =  "idx_patient_birth_date", columnList = "birth_date")
+                @Index(name =  "idx_patient_birth_date", columnList = "birthDate")
         }
 )
 public class Patient {
@@ -35,7 +35,6 @@ public class Patient {
     private String name;
 
     @ToString.Exclude //will exclude this variable in toString method
-    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @Column(unique = true, nullable = false) //using this annotation we do not need to explicitly declare this container as unique
